@@ -21,8 +21,9 @@ ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "1234")
 
 # ================= DB 저장 위치(중요) =================
 # Render에서 Persistent Disk를 /var/data 로 마운트할 거야.
-DATA_DIR = os.getenv("DATA_DIR", "/var/data")
+DATA_DIR = os.environ.get("DATA_DIR", "./data")
 os.makedirs(DATA_DIR, exist_ok=True)
+
 
 # ✅ 안양 전용 DB (영구 디스크에 저장)
 DB_PATH = os.path.join(DATA_DIR, "visitlog_anyang.db")
